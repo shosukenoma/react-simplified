@@ -4,19 +4,19 @@ export function useArray(initialArray) {
   const [array, setArray] = useState(initialArray)
 
   function push(val) {
-    setArray([...array, val])
+    setArray(arr => [...arr, val])
   }
 
   function replace(targetIndex, newElement) {
-    setArray([...array.slice(0, targetIndex), newElement, ...array.slice(targetIndex+1)])
+    setArray(arr => [...arr.slice(0, targetIndex), newElement, ...arr.slice(targetIndex+1)])
   }
 
   function filter(callback) {
-    setArray(array.filter(callback)) // n => n < 3
+    setArray(arr => arr.filter(callback)) // n => n < 3
   }
 
   function remove(targetIndex) {
-    setArray([...array.slice(0, targetIndex), ...array.slice(targetIndex+1)])
+    setArray(arr => [...arr.slice(0, targetIndex), ...arr.slice(targetIndex+1)])
   }
 
   function clear() {
